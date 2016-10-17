@@ -24,13 +24,15 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(17,GPIO.OUT)
 
 while True:
-    if sensor() & 1:
+    if sensor() == 1:
         isTriggerAlarm = False
         alarmBeep = False
         GPIO.output(17,False)
         ledOn = False
     else:
         isTriggerAlarm = True
+
+    print ("sensor: %02d" % sensor())
         
     if isTriggerAlarm:
         if not(ledOn):
